@@ -1,5 +1,5 @@
 class GardenManager:
-	def add_plant(self, name):
+	def add_plant(self, name: str) -> str:
 		try:
 			if name != "":
 				return(f"Added {name} successfully")
@@ -7,11 +7,11 @@ class GardenManager:
 				raise ValueError("Plant name cannot be empty!")
 		except ValueError as e:
 			return(f"Error adding plant: {e}")
-	def water_plant(self, name):
+	def water_plant(self, name: str) -> str:
 		if name != "":
 			return(f"Watering {name} - success")
 		return ("Error: Empty plant name!")
-	def check_plant_health(self, name, water_level, sunlight_hours):
+	def check_plant_health(self, name: str, water_level: int, sunlight_hours: int) -> str:
 		try:
 			if name == "":
 				raise ValueError("Plant name cannot be empty!")
@@ -26,21 +26,21 @@ class GardenManager:
 			return (f"{name}: healthy (water: {water_level}, sun: {sunlight_hours})")
 		except ValueError as e:
 				return (f"Error checking {name}: {e}")
-def test_garden_management():
+def test_garden_management() -> None:
 	print("=== Garden Management System ===")
-	manager = GardenManager()
-	plants = ["tomato", "lettuce", ""]
+	manager: GardenManager = GardenManager()
+	plants: list[str] = ["tomato", "lettuce", ""]
 	print("\nAdding plants to garden...")
 	for plant in plants:
-		result = manager.add_plant(plant)
+		result: str = manager.add_plant(plant)
 		print(result)
 	print("\nWatering plants...")
 	print("Opening watering system")
 	for plant in plants:
-		result2 = manager.water_plant(plant)
+		result2: str = manager.water_plant(plant)
 		print(result2)
 	print("Closing watering system (cleanup)")
-	plant_stats = [
+	plant_stats: list[tuple[str, int, int]] = [
 		("tomato", 5, 8),
 		("lettuce", 15, 8),
 		("rose", 10, 0),
@@ -48,7 +48,7 @@ def test_garden_management():
 ]
 	print("\nChecking plant health...")
 	for name, water, sun in plant_stats:
-		result3 = manager.check_plant_health(name, water, sun)
+		result3: str = manager.check_plant_health(name, water, sun)
 		print(result3)
 	print("\nTesting error recovery...")
 	print("Caught GardenError: Not enough water in tank")

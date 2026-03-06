@@ -1,4 +1,4 @@
-def garden_operation(error_type):
+def garden_operation(error_type: str) -> None:
 	if error_type == "ValueError":
 		int("abc")
 	elif error_type == "ZeroDivisionError":
@@ -6,11 +6,11 @@ def garden_operation(error_type):
 	elif error_type == "FileNotFoundError":
 		open("test.txt", "r")
 	elif error_type == "KeyError":
-		plants = {"rose": "red flowers"}
+		plants: dict[str, str] = {"rose": "red flowers"}
 		print(plants["sunflower"])
-def test_error_types():
+def test_error_types() -> None:
 	print("=== Garden Error Types Demo ===")
-	errors = ["ValueError", "ZeroDivisionError", "FileNotFoundError", "KeyError"]
+	errors: list[str] = ["ValueError", "ZeroDivisionError", "FileNotFoundError", "KeyError"]
 	for error in errors:
 		print(f"\nTesting {error}...")
 		try:

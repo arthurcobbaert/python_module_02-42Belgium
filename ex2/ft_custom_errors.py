@@ -7,17 +7,17 @@ class PlantError(GardenError):
 class WaterError(GardenError):
 	pass
 
-def check_plant(status, plant):
+def check_plant(status: str, plant: str) -> None:
 	if status == "wilting":
 		raise PlantError(f"The {plant} plant is wilting!")
 
-def check_tank(level):
+def check_tank(level: int) -> None:
 	if level < 10:
 		raise WaterError("Not enough water in the tank!")
 	else:
 		print("Water level is OK!")
 
-def test_errors():
+def test_errors() -> None:
 	print("=== Custom Garden Errors Demo ===")
 	print("\nTesting PlantError...")
 	try:
@@ -30,7 +30,7 @@ def test_errors():
 	except WaterError as e:
 		print(f"Caught WaterError: {e}")
 	print("\nTesting catching all garden errors...")
-	test_cases = [("tank", 8), ("plant", "wilting")]
+	test_cases: list[tuple[str, Any]] = [("tank", 8), ("plant", "wilting")]
 	for action, val in test_cases:
 		try:
 			if action == "plant":
